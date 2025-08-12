@@ -1,0 +1,152 @@
+{
+  "common": {
+    "yes": "Yes",
+    "no": "No", 
+    "ok": "OK",
+    "cancel": "Cancel",
+    "back": "Back",
+    "next": "Next",
+    "start": "Start",
+    "quit": "Quit",
+    "loading": "Loading...",
+    "empty": "empty",
+    "take": "takes"
+  },
+  "home": {
+    "title": "Piscari 3x3 Game",
+    "subtitle": "Strategy and chance game",
+    "player1_label": "Enter your name (optional)",
+    "player1_default": "Player 1",
+    "player2_label": "Enter your name (optional)",
+    "player2_default": "Player 2",
+    "first_player_label": "Who plays first?",
+    "first_player_blue": "Blues",
+    "first_player_red": "Reds",
+    "first_player_random": "Random",
+    "language_label": "Language:",
+    "french": "Français",
+    "english": "English",
+    "rules_button": "Game Rules",
+    "start_game": "Start Game",
+    "quit_button": "Quit",
+    "wizard_instruction_blue": "Enter your name or click on {{wizard}}'s image to have him play this game.",
+    "wizard_instruction_red": "Enter your name or click on {{wizard}}'s image to have him play this game.",
+    "wizard_label": "{{wizard}}: your teammate",
+    "view_last_game": "View last game"
+  },
+  "game": {
+    "turn_start": "It's the {{color}}s' turn to play.",
+    "select_cell": "{{player}}, please select an empty cell or a {{prey}}.",
+    "no_moves": "Sorry {{color}}s, no cell allows placing a {{icon}}. It will soon be the {{inactiveColor}}s' turn.",
+    "wizard_playing": "{{wizard}} is playing this turn.",
+    "wizard_suggestion": "{{player}}, {{wizard}} is making a suggestion; it's up to you to choose the cell.",
+    "victory": "Congratulations {{color}}s!",
+    "dice_instruction": "Click ? to roll the dice",
+    "wizard_helper": "{{wizard}}: your teammate",
+    "wait_turn": "Wait for your turn",
+    "rules_button": "Game Rules",
+    "end_game": "Game Over"
+  },
+  "rules": {
+    "title": "Piscari Game: Rules",
+    "rule1": "This game is played by two players, but you can play alone against a digital wizard ({{merlin}} or {{gandalf}}).",
+    "rule2": "Each player chooses a color (blue on the left or red on the right); decide who will play first.",
+    "rule3": "The goal is to align three identical icons (fishermen, fish, or flies) of the same color on the board. The alignment can be horizontal, vertical, or diagonal, like in tic-tac-toe. The first player to successfully align three identical icons wins the game.",
+    "rule4": "Taking turns, players roll the dice by clicking on the \"?\" symbol of their chosen color. The dice then blinks, successively displaying the icons of a fisherman, a fish, and a fly. The result, chosen randomly, will appear automatically after a few seconds.",
+    "rule5": "To place the piece on the board, the player clicks on the chosen cell.",
+    "rule6": "The piece can be placed in an empty cell, or it can replace an existing piece, regardless of color. However, the food chain must be respected:",
+    "food_chain": {
+      "title": "Food chain:",
+      "rule1": "The fisherman catches the fish",
+      "rule2": "The fish eats the fly",
+      "rule3": "The fly stings the fisherman"
+    },
+    "rule7": "If the player can place their piece on the board, they must do so, even if the result seems to disadvantage them. If no possibility exists, they lose their turn.",
+    "rule8": "The wizards {{merlin}} (blue) and {{gandalf}} (red) are your teammates. On the game board, he will play for you for one turn if you click on the wizard's icon first. If you roll the dice yourself first, you can then ask him for advice on which cell to play. To play alone, click on the opposing wizard's icon on the home page. He will then be your opponent for this game.",
+    "back_button": "Back"
+  },
+  "icons": {
+    "pecheur": "fisherman",
+    "poisson": "fish",
+    "mouche": "fly"
+  },
+  "colors": {
+    "bleu": "blue",
+    "rouge": "red"
+  },
+  "wizards": {
+    "Merlin": "Merlin",
+    "Gandalf": "Gandalf"
+  },
+  "notation": {
+    "title": "Game Notation",
+    "download": "Download TXT",
+    "copy": "Copy",
+    "copied": "Notation copied to clipboard!",
+    "copy_error": "Error copying to clipboard",
+    "loading_error": "Error loading game notation",
+    "no_game": "No game in progress",
+    "game_start": "Game started on",
+    "game_end": "Game ended on",
+    "blue_player": "Blue player:",
+    "red_player": "Red player:",
+    "turn": "Turn",
+    "rolls": "rolls",
+    "plays": "plays at",
+    "wins": "and wins on",
+    "diagonal1": "diagonal \"/\" (a1-c3)",
+    "diagonal2": "diagonal \"\\\" (a3-c1)",
+    "column": "column",
+    "row": "row",
+    "game_duration": "Game duration:",
+    "minutes": "minutes",
+    "seconds": "seconds",
+    "game_stats": "Game statistics:",
+    "total_turns": "Total turns:",
+    "blue_turns": "Blue turns:",
+    "red_turns": "Red turns:",
+    "placements": "Placements:",
+    "captures": "Captures:",
+    "game_ended_manually": "Game ended manually",
+    "lost_turn": "loses turn - no valid moves",
+    "lost_turns": "Lost turns:",
+    "victory_for": "Victory for the",
+    "blue_moves_count": "Number of moves played by blues:",
+    "red_moves_count": "Number of moves played by reds:",
+    "placements_lowercase": "placements",
+    "captures_lowercase": "captures",
+    "lost_turns_lowercase": "lost turns"
+  },
+  "wizard_strategy": {
+    "fisherman_explanation": "The fisherman can only capture fish",
+    "fish_explanation": "The fish can only capture flies",
+    "fly_explanation": "The fly can only capture fishermen",
+    "invalid_move_reason": "{{explanation}}. This cell contains {{defender}}."
+  },
+  "ui": {
+    "grid_toggle_show": "Show cell addresses",
+    "grid_toggle_hide": "Hide cell addresses",
+    "audio_enable": "Enable sound",
+    "audio_disable": "Disable sound",
+    "view_notation": "View current game notation",
+    "history_button_tooltip": "Show/hide move history",
+    "history_show_last": "Show last move",
+    "history_show_all": "Show all moves",
+    "history_hide": "Hide history"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "toggle_tooltip": "Toggle theme",
+    "switch_to_dark": "Switch to dark mode",
+    "switch_to_light": "Switch to light mode",
+    "current_theme": "Current theme: {{theme}}"
+  },
+  "alt_text": {
+    "victory_confetti": "Victory animation",
+    "rolling_dice": "Rolling dice",
+    "merlin": "Merlin",
+    "gandalf": "Gandalf"
+  }
+}

@@ -1,0 +1,2007 @@
+/* Piscari Game - Pure CSS Styles */
+/* This replaces Tailwind CSS to avoid conflicts */
+
+/* Theme Variables */
+:root {
+  /* Thème clair (par défaut) */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --bg-tertiary: #f3f4f6;
+  --text-primary: #000000;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+  --border-primary: #9ca3af;
+  --border-secondary: #e5e7eb;
+  --border-light: #d1d5db;
+
+  /* Couleurs de jeu (préservées) */
+  --color-blue: #3b82f6;
+  --color-blue-hover: #2563eb;
+  --color-red: #ef4444;
+  --color-red-hover: #dc2626;
+  --color-green: #22c55e;
+  --color-green-hover: #16a34a;
+
+  /* Couleurs d'état */
+  --color-warning: #fbbf24;
+  --color-warning-bg: #fef3c7;
+  --color-success: #10b981;
+  --color-success-bg: #d1fae5;
+
+
+}
+
+[data-theme="dark"] {
+  /* Thème sombre */
+  --bg-primary: #1f2937;
+  --bg-secondary: #374151;
+  --bg-tertiary: #4b5563;
+  --text-primary: #f9fafb;
+  --text-secondary: #d1d5db;
+  --text-muted: #9ca3af;
+  --border-primary: #6b7280;
+  --border-secondary: #4b5563;
+  --border-light: #374151;
+
+  /* Couleurs de jeu (adaptées pour le contraste) */
+  --color-blue: #60a5fa;
+  --color-blue-hover: #3b82f6;
+  --color-red: #f87171;
+  --color-red-hover: #ef4444;
+  --color-green: #4ade80;
+  --color-green-hover: #22c55e;
+
+  /* Couleurs d'état */
+  --color-warning: #fcd34d;
+  --color-warning-bg: #451a03;
+  --color-success: #34d399;
+  --color-success-bg: #064e3b;
+
+
+}
+
+/* Transitions fluides pour le changement de thème */
+* {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Optimisation des transitions CSS */
+.theme-transition {
+  transition: background-color 0.2s ease, color 0.2s ease;
+  will-change: background-color, color;
+}
+
+/* Éviter les transitions sur les propriétés coûteuses */
+.no-transition {
+  transition: none !important;
+}
+
+/* Respect de la préférence reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .theme-toggle {
+    transition: none !important;
+  }
+
+  .board-cell.blinking,
+  .board-cell.winning {
+    animation: none !important;
+  }
+}
+
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Comic Sans MS", "Comic Neue", cursive, sans-serif !important;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* HomePage Styles */
+.home-container {
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  font-family: "Comic Sans MS", "Comic Neue", cursive, sans-serif;
+  position: relative;
+}
+
+.home-theme-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+}
+
+.home-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.home-language-section {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.home-language-btn {
+  padding: 0.75rem 2rem;
+  font-size: 1.25rem;
+  border: 2px solid var(--border-primary);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  border-radius: 0.5rem;
+  min-width: 8rem;
+  margin: 0 0.5rem;
+  cursor: pointer;
+  font-family: "Comic Sans MS", "Comic Neue", cursive, sans-serif;
+  transition: all 0.2s ease;
+}
+
+.home-language-btn:hover {
+  background-color: var(--bg-secondary);
+  transform: scale(1.05);
+}
+
+.home-players-section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 6rem;
+  margin-bottom: 1rem;
+}
+
+.home-player-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #9ca3af;
+  font-size: 1.25rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  min-width: 12rem;
+  color: white;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  font-family: "Comic Sans MS", "Comic Neue", cursive, sans-serif;
+}
+
+.home-player-input.blue {
+  background-color: #3b82f6;
+}
+
+.home-player-input.blue::placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.home-player-input.red {
+  background-color: #ef4444;
+}
+
+.home-player-input.red::placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.home-choice-section {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.home-choice-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.home-choice-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.home-choice-btn {
+  font-size: 1.25rem;
+  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  min-width: 8rem;
+  color: white;
+  margin: 0 0.5rem;
+
+  border: none;
+  cursor: pointer;
+  font-family: "Comic Sans MS", "Comic Neue", cursive, sans-serif;
+  transition: all 0.2s ease;
+}
+
+.home-choice-btn.blue {
+  background-color: #3b82f6;
+}
+
+.home-choice-btn.blue:hover {
+  background-color: #2563eb;
+  transform: scale(1.05);
+}
+
+.home-choice-btn.green {
+  background-color: #22c55e;
+}
+
+.home-choice-btn.green:hover {
+  background-color: #16a34a;
+  transform: scale(1.05);
+}
+
+.home-choice-btn.red {
+  background-color: #ef4444;
+}
+
+.home-choice-btn.red:hover {
+  background-color: #dc2626;
+  transform: scale(1.05);
+}
+
+.home-actions-section {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.home-action-btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.25rem;
+  border: 2px solid var(--border-primary);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  border-radius: 0.5rem;
+  min-width: 9rem;
+  margin: 0 0.75rem;
+  cursor: pointer;
+  font-family: "Comic Sans MS", "Comic Neue", cursive, sans-serif;
+  transition: all 0.2s ease;
+}
+
+.home-action-btn:hover {
+  background-color: var(--bg-secondary);
+  transform: scale(1.05);
+}
+
+/* GamePage Styles */
+.game-container {
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  display: flex;
+  flex-direction: column;
+  font-family: "Comic Sans MS", "Comic Neue", cursive, sans-serif;
+}
+
+.game-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 auto;
+  padding: 0.5rem 2rem;
+  height: 80px;
+  position: relative;
+}
+
+.header-controls {
+  position: absolute;
+  right: 2rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.grid-toggle,
+.audio-toggle,
+.notation-btn,
+.history-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  transition: all 0.2s;
+  font-family: "Comic Sans MS", "Comic Neue", cursive, sans-serif;
+}
+
+/* Style spécifique pour le bouton # avec police Cascadia Code ExtraLight */
+.grid-toggle {
+  font-family: "Cascadia Code ExtraLight", "Cascadia Code", "Consolas", "Courier New", monospace !important;
+  font-weight: 200;
+}
+
+.grid-toggle.active {
+  color: #22c55e;
+}
+
+.grid-toggle.inactive {
+  color: #9ca3af;
+}
+
+.grid-toggle:hover,
+.audio-toggle:hover,
+.notation-btn:hover,
+.history-btn:hover {
+  background-color: var(--bg-tertiary);
+  transform: scale(1.1);
+}
+
+/* Les styles du history-btn sont maintenant dans history-icon.css */
+
+.game-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--text-primary);
+  text-align: center;
+  margin: 0;
+}
+
+.game-main {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.player-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  min-width: 200px;
+  flex: 0 0 auto;
+}
+
+.player-header {
+  background-color: #3b82f6;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  min-width: 140px;
+  text-align: center;
+}
+
+.player-header.red {
+  background-color: #ef4444;
+}
+
+.dice-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dice {
+  width: 100px;
+  height: 100px;
+  border: 2px solid var(--border-primary);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-primary);
+  cursor: pointer;
+  font-size: 3.5rem;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.dice.blue {
+  color: #3b82f6;
+  border-color: #3b82f6;
+}
+
+.dice.red {
+  color: #ef4444;
+  border-color: #ef4444;
+}
+
+.dice.active {
+  cursor: pointer;
+}
+
+.dice.active:hover {
+  transform: scale(1.1);
+}
+
+.dice.inactive {
+  cursor: not-allowed;
+}
+
+.wizard.inactive {
+  cursor: not-allowed;
+}
+
+.wizard.active:hover {
+  transform: scale(1.1);
+}
+
+.dice-image {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+}
+
+.dice-message {
+  font-size: 0.8rem;
+  text-align: center;
+  color: #6b7280;
+  max-width: 160px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wizard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.wizard {
+  width: 100px;
+  height: 100px;
+  border: 2px solid var(--border-primary);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-primary);
+  cursor: pointer;
+  font-size: 2.5rem;
+  transition: all 0.2s ease;
+}
+
+.wizard-image {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+}
+
+.wizard-message {
+  font-size: 0.8rem;
+  text-align: center;
+  color: #6b7280;
+  max-width: 160px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.board-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.board-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.board-with-labels {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  background-color: #22c55e;
+  padding: 4px;
+  border-radius: 0.5rem;
+}
+
+/* Labels des colonnes en haut */
+.column-labels-top {
+  display: grid;
+  grid-template-columns: 2rem repeat(3, 100px) 2rem;
+  gap: 4px;
+  align-items: center;
+  margin-bottom: 0.25rem;
+  justify-items: center;
+  height: 2rem;
+}
+
+/* Labels des colonnes en bas */
+.column-labels-bottom {
+  display: grid;
+  grid-template-columns: 2rem repeat(3, 100px) 2rem;
+  gap: 4px;
+  align-items: center;
+  margin-top: 0.25rem;
+  justify-items: center;
+  height: 2rem;
+}
+
+.board-container .column-label {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #22c55e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Courier New", "Lucida Console", monospace !important;
+}
+
+.board-container .corner-label {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #22c55e;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Courier New", "Lucida Console", monospace !important;
+}
+
+/* Ajustement spécifique pour l'alignement des diagonales */
+.column-labels-top .corner-label:first-child {
+  justify-self: end;
+  margin-right: 0.25rem;
+}
+
+.column-labels-top .corner-label:last-child {
+  justify-self: start;
+  margin-left: 0.25rem;
+}
+
+.column-labels-bottom .corner-label:first-child {
+  justify-self: end;
+  margin-right: 0.25rem;
+}
+
+.column-labels-bottom .corner-label:last-child {
+  justify-self: start;
+  margin-left: 0.25rem;
+}
+
+/* Labels des rangées à gauche */
+.row-labels-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-right: 0.5rem;
+}
+
+/* Labels des rangées à droite */
+.row-labels-right {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-left: 0.5rem;
+}
+
+.board-container .row-label {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #22c55e;
+  width: 2rem;
+  font-family: "Courier New", "Lucida Console", monospace !important;
+}
+
+.board-cell {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 3.5rem;
+  transition: all 0.2s ease;
+}
+
+.board-cell:hover {
+  background-color: var(--bg-secondary);
+}
+
+.board-cell.clickable:hover {
+  transform: scale(1.05);
+  background-color: #dcfce7;
+  border-color: #22c55e;
+}
+
+.board-cell.blinking {
+  animation: blink 0.8s infinite;
+  border-color: #fbbf24 !important;
+  border-width: 3px !important;
+}
+
+.board-cell.winning {
+  animation: victory-blink 1s infinite;
+  border-color: #10b981 !important;
+  border-width: 4px !important;
+  z-index: 10;
+}
+
+.board-cell.winning {
+  animation: victory-blink 1s infinite;
+  border-color: #10b981 !important;
+  border-width: 4px !important;
+  z-index: 10;
+}
+
+@keyframes blink {
+
+  0%,
+  50% {
+    opacity: 1;
+    background-color: #fef3c7;
+    transform: scale(1);
+  }
+
+  51%,
+  100% {
+    opacity: 0.6;
+    background-color: #fbbf24;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes blink {
+  0%, 50% { 
+    opacity: 1; 
+    background-color: #fef3c7;
+    transform: scale(1);
+  }
+  51%, 100% { 
+    opacity: 0.6; 
+    background-color: #fbbf24;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes victory-blink {
+  0%, 50% { 
+    opacity: 1; 
+    background-color: #d1fae5;
+    transform: scale(1.1);
+    border-color: #10b981 !important;
+    border-width: 4px !important;
+  }
+  51%, 100% { 
+    opacity: 0.8; 
+    background-color: #10b981;
+    transform: scale(1.15);
+    border-color: #22c55e !important;
+    border-width: 5px !important;
+  }
+}
+
+.cell-icon {
+  width: 95px;
+  height: 95px;
+  object-fit: contain;
+}
+
+.board-cell.clickable {
+  cursor: pointer;
+}
+
+.board-cell.not-clickable {
+  cursor: not-allowed;
+}
+
+/* Adresse de la case dans le coin haut gauche */
+.cell-address {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #16a34a;
+  background-color: transparent;
+  padding: 2px 4px;
+  border-radius: 3px;
+  line-height: 1;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Numéro d'historique dans le coin bas droite */
+.cell-history-number {
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1;
+  z-index: 10;
+  pointer-events: none;
+  font-family: "Courier New", "Lucida Console", monospace;
+  background-color: transparent;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+.cell-history-number.latest {
+  font-size: 18px;
+  /* Légèrement plus grand pour le dernier coup */
+  font-weight: 900;
+  padding: 3px 5px;
+}
+
+.cell-history-number.green {
+  color: #16a34a;
+}
+
+.cell-history-number.blue {
+  color: #2563eb;
+}
+
+.cell-history-number.red {
+  color: #dc2626;
+}
+
+/* Responsive adjustments for history numbers */
+@media (max-width: 768px) {
+  .cell-history-number {
+    font-size: 12px;
+  }
+
+  .cell-history-number.latest {
+    font-size: 15px;
+  }
+}
+
+.game-message {
+  background-color: var(--bg-tertiary);
+  border: 2px solid var(--border-primary);
+  padding: 0.75rem;
+  text-align: center;
+  font-size: 1.25rem;
+  font-style: italic;
+  margin: 0.5rem 2rem;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-footer {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 0.25rem 2rem;
+  flex: 0 0 auto;
+  height: 60px;
+  align-items: center;
+}
+
+.game-players-vertical {
+  display: none;
+}
+
+.game-btn {
+  padding: 1rem 2rem;
+  font-size: 1.375rem;
+  border: 2px solid var(--border-primary);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  border-radius: 0.5rem;
+  min-width: 11rem;
+  cursor: pointer;
+  font-family: "Comic Sans MS", "Comic Neue", cursive, sans-serif;
+  transition: all 0.2s ease;
+}
+
+.game-btn:hover {
+  background-color: var(--bg-secondary);
+  transform: scale(1.05);
+}
+
+/* RulesPage Styles */
+.rules-container {
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2rem;
+  font-family: "Comic Sans MS", "Comic Neue", cursive, sans-serif;
+  position: relative;
+}
+
+.rules-theme-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+}
+
+.rules-content {
+  max-width: 100%;
+  width: 100%;
+  background-color: var(--bg-primary);
+}
+
+.rules-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.rules-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.rule-item {
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0.5rem 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.rule-item p {
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.food-chain-list {
+  margin-top: 1rem;
+  margin-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.food-chain-list p {
+  font-weight: bold;
+  color: var(--text-primary);
+}
+
+.rules-footer {
+  display: flex;
+  justify-content: center;
+}
+
+.rules-back-btn {
+  padding: 1rem 2rem;
+  font-size: 1.375rem;
+  border: 2px solid var(--border-primary);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  border-radius: 0.5rem;
+  min-width: 11rem;
+  cursor: pointer;
+  font-family: "Comic Sans MS", "Comic Neue", cursive, sans-serif;
+  transition: all 0.2s ease;
+}
+
+.rules-back-btn:hover {
+  background-color: var(--bg-secondary);
+  transform: scale(1.05);
+}
+
+/* ThemeToggle Styles */
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: "Comic Sans MS", "Comic Neue", cursive, sans-serif;
+}
+
+.theme-toggle:hover {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  transform: scale(1.1);
+}
+
+.theme-toggle:focus,
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 2px;
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
+}
+
+.theme-toggle-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal-content {
+  background-color: var(--bg-primary);
+  border-radius: 0.5rem;
+
+  max-width: 90vw;
+  max-height: 90vh;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid var(--border-primary);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border-secondary);
+  background-color: var(--bg-secondary);
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--text-primary);
+  font-family: "Comic Sans MS", "Comic Neue", cursive, sans-serif;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-secondary);
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease;
+}
+
+.modal-close:hover {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.modal-body {
+  padding: 1.5rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.game-notation-display {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-secondary);
+  border-radius: 0.25rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.game-notation-display pre {
+  margin: 0 !important;
+  padding: 1rem !important;
+  font-family: "Comic Sans MS", "Comic Neue", cursive, sans-serif !important;
+  font-size: 0.9rem !important;
+  line-height: 1.5 !important;
+  color: var(--text-primary) !important;
+  background-color: var(--bg-tertiary) !important;
+  border: 1px solid var(--border-primary) !important;
+  border-radius: 0.25rem !important;
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  min-height: 3rem !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+}
+
+/* Force l'affichage du texte en mode sombre */
+[data-theme="dark"] .game-notation-display pre {
+  color: #ffffff !important;
+  background-color: #374151 !important;
+}
+
+/* Force l'affichage du texte en mode clair */
+[data-theme="light"] .game-notation-display pre,
+.game-notation-display pre {
+  color: #000000 !important;
+  background-color: #e5e7eb !important;
+}
+
+
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  font-family: "Comic Sans MS", "Comic Neue", cursive, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  background-color: var(--color-blue);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-blue-hover);
+  transform: scale(1.05);
+}
+
+.btn-secondary {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-primary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--border-primary);
+  transform: scale(1.05);
+}
+
+/* Utility classes */
+.text-center {
+  text-align: center;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .home-players-section {
+    gap: 4rem;
+  }
+
+  .rules-container {
+    padding: 1rem;
+  }
+
+  .rules-content {
+    padding: 1rem;
+  }
+
+  .rules-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .rule-item {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .food-chain-list {
+    margin-left: 1rem;
+  }
+}
+
+/* Responsive design for rules page - horizontal screens */
+@media (min-aspect-ratio: 1/1) {
+  .rules-container {
+    padding: 1rem 1rem;
+    justify-content: flex-start;
+  }
+
+  .rules-title {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .rules-list {
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .rule-item {
+    padding: 1.25rem;
+    font-size: 1.25rem;
+    line-height: 1.6;
+  }
+
+  .food-chain-list {
+    margin-top: 1rem;
+    margin-left: 2rem;
+    gap: 0.75rem;
+  }
+
+  .rules-back-btn {
+    padding: 1rem 2rem;
+    font-size: 1.375rem;
+    min-width: 11rem;
+  }
+}
+
+/* Responsive design for game page */
+@media (max-aspect-ratio: 1/1) {
+
+  /* Écrans verticaux : zones joueurs sous les messages */
+  .game-container {
+    display: grid;
+    grid-template-rows: auto 1fr auto auto auto;
+    grid-template-areas:
+      "header"
+      "main"
+      "message"
+      "players"
+      "footer";
+    min-height: 100vh;
+  }
+
+  .game-header {
+    grid-area: header;
+    padding: 1rem 2rem;
+  }
+
+  .game-main {
+    grid-area: main;
+    position: static;
+    justify-content: center;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .game-message {
+    grid-area: message;
+    margin: 1rem 2rem;
+  }
+
+  .game-footer {
+    grid-area: footer;
+    padding: 1rem 2rem;
+  }
+
+  /* Cacher les zones joueurs de la zone principale en mode vertical */
+  .game-main .player-zone {
+    display: none;
+  }
+
+  /* Afficher les zones joueurs dans la section dédiée */
+  .game-players-vertical {
+    grid-area: players;
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem 2rem 2rem 2rem;
+    gap: 2rem;
+  }
+
+  .game-players-vertical .player-zone {
+    position: static;
+    min-width: auto;
+    flex: 1;
+    max-width: 300px;
+  }
+}
+
+@media (min-aspect-ratio: 1/1) {
+
+  /* Écrans horizontaux : layout optimisé */
+  .game-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .game-header {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    height: 80px;
+  }
+
+  .game-title {
+    font-size: 1.75rem;
+  }
+
+  .game-main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    gap: 1.5rem;
+    min-height: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .game-main .player-zone {
+    position: static;
+    flex: 0 0 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .board-area {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Cacher la section verticale en mode horizontal */
+  .game-players-vertical {
+    display: none;
+  }
+
+  .game-message {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 2rem;
+    height: 60px;
+  }
+
+  .game-footer {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    height: 80px;
+  }
+}
+
+/* 
+Suppression des effets de focus/active pour les contrôleurs de jeu */
+.dice:focus,
+.dice:focus-visible,
+.wizard:focus,
+.wizard:focus-visible {
+  outline: 3px solid #fbbf24 !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.3) !important;
+  transition: outline 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.dice.blue:focus,
+.dice.blue:focus-visible {
+  outline-color: #3b82f6 !important;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3) !important;
+}
+
+.dice.red:focus,
+.dice.red:focus-visible {
+  outline-color: #ef4444 !important;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.3) !important;
+}
+
+.dice:active {
+  outline: none !important;
+  box-shadow: none !important;
+  background-color: white !important;
+  opacity: 1 !important;
+}
+
+.wizard:active {
+  outline: none !important;
+  box-shadow: none !important;
+  background-color: white !important;
+  opacity: 1 !important;
+}
+
+.board-cell:active {
+  outline: none !important;
+  box-shadow: none !important;
+  background-color: white !important;
+  opacity: 1 !important;
+}
+
+.board-cell.winning:focus,
+.board-cell.winning:active,
+.board-cell.winning:focus-visible {
+  background-color: #fef3c7 !important;
+  border-color: #f59e0b !important;
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.5) !important;
+}
+
+.board-cell.blinking:focus,
+.board-cell.blinking:active,
+.board-cell.blinking:focus-visible {
+  background-color: #fef3c7 !important;
+  border-color: #fbbf24 !important;
+}
+
+/* Suppression des effets de focus pour tous les boutons du jeu */
+.home-language-btn:focus,
+.home-language-btn:active,
+.home-language-btn:focus-visible,
+.home-choice-btn:focus,
+.home-choice-btn:active,
+.home-choice-btn:active,
+.home-action-btn:active,
+.game-btn:active,
+.rules-back-btn:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Maintenir les couleurs normales des boutons même en focus/active */
+.home-language-btn:focus,
+.home-language-btn:active {
+  background-color: white !important;
+  color: black !important;
+}
+
+.home-choice-btn.blue:focus,
+.home-choice-btn.blue:active {
+  background-color: #3b82f6 !important;
+  color: white !important;
+}
+
+.home-choice-btn.green:focus,
+.home-choice-btn.green:active {
+  background-color: #22c55e !important;
+  color: white !important;
+}
+
+.home-choice-btn.red:focus,
+.home-choice-btn.red:active {
+  background-color: #ef4444 !important;
+  color: white !important;
+}
+
+.home-action-btn:active,
+.game-btn:active,
+.rules-back-btn:active {
+  background-color: white !important;
+  color: black !important;
+}
+
+/* Suppression des effets de focus pour l'état active uniquement */
+.home-wizard-icon:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.home-wizard-icon.blue:focus,
+.home-wizard-icon.blue:active {
+  background-color: #3b82f6 !important;
+  border-color: #2563eb !important;
+}
+
+.home-wizard-icon.red:focus,
+.home-wizard-icon.red:active {
+  background-color: #ef4444 !important;
+  border-color: #dc2626 !important;
+}
+
+/* Suppression des effets de focus pour les contrôles d'en-tête */
+.grid-toggle:focus,
+.grid-toggle:active,
+.grid-toggle:focus-visible,
+.audio-toggle:focus,
+.audio-toggle:active,
+.audio-toggle:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.grid-toggle.active:focus,
+.grid-toggle.active:active {
+  color: #22c55e !important;
+}
+
+.grid-toggle.inactive:focus,
+.grid-toggle.inactive:active {
+  color: #9ca3af !important;
+}
+
+/* Suppression globale des effets de focus pour tous les éléments */
+*:focus,
+*:active,
+*:focus-visible {
+  outline: none !important;
+}
+
+/* Styles spécifiques pour éviter les problèmes avec les contrôleurs */
+button::-moz-focus-inner {
+  border: 0 !important;
+}
+
+/* Suppression des effets de sélection de texte qui peuvent causer des problèmes */
+.dice,
+.wizard,
+.board-cell,
+.home-wizard-icon {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+
+
+/* Styles spécifiques pour les magiciens selon leur couleur - priorité élevée */
+.game-container .player-zone[data-player="bleu"] .wizard:focus,
+.game-container .player-zone[data-player="bleu"] .wizard:focus-visible {
+  outline: 3px solid #3b82f6 !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3) !important;
+  transition: outline 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.game-container .player-zone[data-player="rouge"] .wizard:focus,
+.game-container .player-zone[data-player="rouge"] .wizard:focus-visible {
+  outline: 3px solid #ef4444 !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.3) !important;
+  transition: outline 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+/* Style par défaut pour les magiciens sans data-player */
+.game-container .player-zone .wizard:focus,
+.game-container .player-zone .wizard:focus-visible {
+  outline: 3px solid #fbbf24 !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.3) !important;
+  transition: outline 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+/* Styles
+ de focus pour magiciens - spécificité maximale */
+div.game-container div.player-zone[data-player="bleu"] div.wizard:focus,
+div.game-container div.player-zone[data-player="bleu"] div.wizard:focus-visible {
+  outline: 3px solid #3b82f6 !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3) !important;
+  transition: outline 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+div.game-container div.player-zone[data-player="rouge"] div.wizard:focus,
+div.game-container div.player-zone[data-player="rouge"] div.wizard:focus-visible {
+  outline: 3px solid #ef4444 !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.3) !important;
+  transition: outline 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+/* Styles pour les écrans verticaux aussi */
+div.game-container div.game-players-vertical div.player-zone[data-player="bleu"] div.wizard:focus,
+div.game-container div.game-players-vertical div.player-zone[data-player="bleu"] div.wizard:focus-visible {
+  outline: 3px solid #3b82f6 !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3) !important;
+  transition: outline 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+div.game-container div.game-players-vertical div.player-zone[data-player="rouge"] div.wizard:focus,
+div.game-container div.game-players-vertical div.player-zone[data-player="rouge"] div.wizard:focus-visible {
+  outline: 3px solid #ef4444 !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.3) !important;
+  transition: outline 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+/* B
+ordures colorées pour les magiciens selon le joueur */
+.player-zone[data-player="bleu"] .wizard {
+  border-color: #3b82f6 !important;
+}
+
+.player-zone[data-player="rouge"] .wizard {
+  border-color: #ef4444 !important;
+}
+
+/* Styles pour les écrans verticaux aussi */
+.game-players-vertical .player-zone[data-player="bleu"] .wizard {
+  border-color: #3b82f6 !important;
+}
+
+.game-players-vertical .player-zone[data-player="rouge"] .wizard {
+  border-color: #ef4444 !important;
+}
+
+/* Styles de focus pour les cases du plateau - visibilité améliorée */
+.board-cell:focus,
+.board-cell:focus-visible {
+  outline: 4px solid #22c55e !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.4) !important;
+  transition: outline 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, transform 0.2s ease !important;
+  transform: scale(1.02) !important;
+}
+
+.board-cell.clickable:focus,
+.board-cell.clickable:focus-visible {
+  outline-color: #22c55e !important;
+  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.5), 0 0 20px rgba(34, 197, 94, 0.3) !important;
+  background-color: #dcfce7 !important;
+  border-color: #22c55e !important;
+  border-width: 3px !important;
+}
+
+.board-cell.not-clickable:focus,
+.board-cell.not-clickable:focus-visible {
+  outline-color: #16a34a !important;
+  box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.4), 0 0 15px rgba(22, 163, 74, 0.2) !important;
+  background-color: #f0fdf4 !important;
+  border-color: #16a34a !important;
+  border-width: 3px !important;
+}
+
+/* Styles de focus pour les boutons du jeu */
+.game-btn:focus,
+.game-btn:focus-visible {
+  outline: 3px solid #3b82f6 !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3) !important;
+  transition: outline 0.2s ease, box-shadow 0.2s ease !important;
+  background-color: #f0f9ff !important;
+}
+
+/* Styles de focus pour les boutons de la page d'accueil */
+.home-language-btn:focus,
+.home-language-btn:focus-visible,
+.home-choice-btn:focus,
+.home-choice-btn:focus-visible,
+.home-action-btn:focus,
+.home-action-btn:focus-visible {
+  outline: 3px solid #3b82f6 !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3) !important;
+  transition: outline 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.home-choice-btn.blue:focus,
+.home-choice-btn.blue:focus-visible {
+  outline-color: #3b82f6 !important;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3) !important;
+}
+
+.home-choice-btn.green:focus,
+.home-choice-btn.green:focus-visible {
+  outline-color: #22c55e !important;
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.3) !important;
+}
+
+.home-choice-btn.red:focus,
+.home-choice-btn.red:focus-visible {
+  outline-color: #ef4444 !important;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.3) !important;
+}
+
+/* Styles de focus pour les contrôles d'en-tête */
+.grid-toggle:focus,
+.grid-toggle:focus-visible,
+.audio-toggle:focus,
+.audio-toggle:focus-visible {
+  outline: 3px solid #22c55e !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.3) !important;
+  transition: outline 0.2s ease, box-shadow 0.2s ease !important;
+  background-color: #f0fdf4 !important;
+}
+
+.grid-toggle.active:focus,
+.grid-toggle.active:focus-visible {
+  outline-color: #3b82f6 !important;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3) !important;
+  background-color: #3b82f6 !important;
+}
+
+/* Styles de focus pour les icônes de magiciens sur la page d'accueil */
+.home-wizard-icon:focus,
+.home-wizard-icon:focus-visible {
+  outline: 3px solid #fbbf24 !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.3) !important;
+  transition: outline 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.home-wizard-icon.blue:focus,
+.home-wizard-icon.blue:focus-visible {
+  outline-color: #3b82f6 !important;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3) !important;
+}
+
+.home-wizard-icon.red:focus,
+.home-wizard-icon.red:focus-visible {
+  outline-color: #ef4444 !important;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.3) !important;
+}
+
+/* S
+tyles de base pour les icônes de magiciens sur la page d'accueil */
+.home-wizard-icon {
+  width: 110px !important;
+  height: 110px !important;
+  border: 3px solid #9ca3af !important;
+  border-radius: 15px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  margin-top: 2.5rem !important;
+  padding: 5px !important;
+  overflow: hidden !important;
+  background-color: white !important;
+}
+
+/* Bordures colorées par défaut pour les magiciens */
+.home-wizard-icon.blue {
+  border-color: #3b82f6 !important;
+}
+
+.home-wizard-icon.red {
+  border-color: #ef4444 !important;
+}
+
+/* Effets de survol */
+.home-wizard-icon:hover {
+  transform: scale(1.05) !important;
+}
+
+.home-wizard-icon.blue:hover {
+  border-color: #2563eb !important;
+}
+
+.home-wizard-icon.red:hover {
+  border-color: #dc2626 !important;
+}
+
+/* Styles pour les images des magiciens dans les icônes */
+.home-wizard-icon .wizard-image {
+  width: 90px !important;
+  height: 90px !important;
+  object-fit: contain !important;
+}
+
+/*
+ Styles de focus pour le bouton retour des règles */
+.rules-back-btn:focus,
+.rules-back-btn:focus-visible {
+  outline: 3px solid #3b82f6 !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3) !important;
+  transition: outline 0.2s ease, box-shadow 0.2s ease !important;
+  background-color: #f0f9ff !important;
+}
+
+/* Assurer
+ que le zoom du navigateur fonctionne correctement */
+html {
+  touch-action: manipulation !important;
+}
+
+body {
+  touch-action: manipulation !important;
+  zoom: 1 !important;
+}
+
+/* Éviter les conflits avec le zoom */
+* {
+  touch-action: manipulation !important;
+}
+
+/* Modal
+ styles for game notation */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  max-width: 90vw;
+  max-height: 90vh;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  font-family: "Comic Sans MS", "Comic Neue", cursive, sans-serif;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.modal-header h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: black;
+  margin: 0;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #6b7280;
+  padding: 0;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.25rem;
+  transition: all 0.2s;
+}
+
+.modal-close:hover {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+.modal-body {
+  padding: 1.5rem;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.game-notation-display {
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.game-notation-display pre {
+  font-family: "Courier New", "Lucida Console", monospace;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btn-primary {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: "Comic Sans MS", "Comic Neue", cursive, sans-serif;
+  transition: all 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: #2563eb;
+  transform: scale(1.05);
+}
+
+.btn-secondary {
+  background-color: #6b7280;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: "Comic Sans MS", "Comic Neue", cursive, sans-serif;
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+  background-color: #4b5563;
+  transform: scale(1.05);
+}
+
+/* Notation buttons in game header */
+.notation-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.notation-btn {
+  background: none;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #374151;
+  transition: all 0.2s;
+  font-family: "Comic Sans MS", "Comic Neue", cursive, sans-serif;
+}
+
+.notation-btn:hover {
+  background-color: #f3f4f6;
+  transform: scale(1.1);
+}
+
+.notation-btn:focus,
+.notation-btn:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 1px;
+  background-color: #f0f9ff;
+}
+
+/* Responsive modal */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95vw;
+    max-height: 95vh;
+  }
+
+  .modal-header {
+    padding: 1rem;
+  }
+
+  .modal-body {
+    padding: 1rem;
+  }
+
+  .game-notation-display {
+    max-height: 300px;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+  }
+
+  .notation-buttons {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .notation-btn {
+    font-size: 0.8rem;
+    padding: 0.4rem;
+  }
+}
+
+/* 
+Home page notation buttons */
+.home-notation-section {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.home-notation-btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: 2px solid #6b7280;
+  background-color: white;
+  color: #374151;
+  border-radius: 0.5rem;
+  min-width: 10rem;
+  cursor: pointer;
+  font-family: "Comic Sans MS", "Comic Neue", cursive, sans-serif;
+  transition: all 0.2s ease;
+}
+
+.home-notation-btn:hover {
+  background-color: #f9fafb;
+  border-color: #4b5563;
+  transform: scale(1.05);
+}
+
+.home-notation-btn:focus,
+.home-notation-btn:focus-visible {
+  outline: 3px solid #3b82f6 !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3) !important;
+  transition: outline 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+/* Responsive design for home notation buttons */
+@media (max-width: 768px) {
+  .home-notation-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .home-notation-btn {
+    min-width: 12rem;
+  }
+}

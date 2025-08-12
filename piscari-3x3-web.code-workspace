@@ -1,0 +1,11 @@
+{
+  "folders": [
+    {
+      "name": "Piscari 3x3 Web",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "window.title": "Piscari 3x3 Web - ${activeEditorShort}${separator}${rootName}"
+  }
+}

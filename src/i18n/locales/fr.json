@@ -1,0 +1,152 @@
+{
+  "common": {
+    "yes": "Oui",
+    "no": "Non",
+    "ok": "OK",
+    "cancel": "Annuler",
+    "back": "Retour",
+    "next": "Suivant",
+    "start": "Commencer",
+    "quit": "Quitter",
+    "loading": "Chargement...",
+    "empty": "vide",
+    "take": "prend"
+  },
+  "home": {
+    "title": "Jeu de Piscari 3x3",
+    "subtitle": "Jeu de stratégie et de hasard",
+    "player1_label": "Inscrire votre nom (optionnel)",
+    "player1_default": "Joueur 1",
+    "player2_label": "Inscrire votre nom (optionnel)",
+    "player2_default": "Joueur 2",
+    "first_player_label": "Qui joue en premier ?",
+    "first_player_blue": "Les bleus",
+    "first_player_red": "Les rouges", 
+    "first_player_random": "Au hasard",
+    "language_label": "Langue:",
+    "french": "Français",
+    "english": "English",
+    "rules_button": "Règles du jeu",
+    "start_game": "Commencer la partie",
+    "quit_button": "Quitter",
+    "wizard_instruction_blue": "Inscrire votre nom ou cliquer sur l'image de {{wizard}} pour qu'il joue cette partie.",
+    "wizard_instruction_red": "Inscrire votre nom ou cliquer sur l'image de {{wizard}} pour qu'il joue cette partie.",
+    "wizard_label": "{{wizard}}: votre coéquipier",
+    "view_last_game": "Voir la dernière partie"
+  },
+  "game": {
+    "turn_start": "C'est aux {{color}}s de jouer.",
+    "select_cell": "{{player}}, veuillez sélectionner une case vide ou un(e) {{prey}}.",
+    "no_moves": "Désolé les {{color}}s, aucune case ne permet de placer un(e) {{icon}}. Ce sera bientôt aux {{inactiveColor}}s de jouer.",
+    "wizard_playing": "C'est {{wizard}} qui joue pour ce tour.",
+    "wizard_suggestion": "{{player}}, {{wizard}} vous fait une suggestion; c'est à vous de choisir la case.",
+    "victory": "Bravo les {{color}}s !",
+    "dice_instruction": "Cliquez ? pour rouler le dé",
+    "wizard_helper": "{{wizard}}: votre coéquipier",
+    "wait_turn": "Attendez votre tour",
+    "rules_button": "Règles du jeu",
+    "end_game": "Partie terminée"
+  },
+  "rules": {
+    "title": "Jeu de Piscari : Règles du jeu",
+    "rule1": "Ce jeu se joue à deux, mais vous pouvez jouer seul, contre un magicien numérique ({{merlin}} ou {{gandalf}}).",
+    "rule2": "Chaque joueur choisit une couleur (bleu à gauche ou rouge à droite); décidez qui jouera en premier.",
+    "rule3": "Le but est d'aligner sur le damier trois icônes identiques (pêcheurs, poissons ou mouches) de la même couleur. L'alignement peut être horizontal, vertical ou diagonal, comme pour le jeu de tic-tac-toe. Le premier joueur qui réussit à aligner trois icônes identiques gagne la partie.",
+    "rule4": "À tour de rôle, les joueurs roulent le dé en cliquant sur le symbole \"?\" de la couleur choisie. Le dé clignote alors en affichant successivement les icônes d'un pêcheur, d'un poisson et d'une mouche. Le résultat, choisi au hasard, apparaîtra automatiquement après quelques secondes.",
+    "rule5": "Pour placer le pion sur le damier, le joueur clique sur la case choisie.",
+    "rule6": "Le pion peut être placé dans une case libre, ou il peut remplacer un pion existant, peu importe la couleur. Toutefois, il faut respecter la boucle alimentaire :",
+    "food_chain": {
+      "title": "Boucle alimentaire :",
+      "rule1": "Le pêcheur attrape le poisson",
+      "rule2": "Le poisson mange la mouche", 
+      "rule3": "La mouche pique le pêcheur"
+    },
+    "rule7": "Si le joueur peut placer son pion sur le damier, il doit le faire, même si le résultat semble le désavantager. S'il n'existe aucune possibilité, il perd son tour.",
+    "rule8": "Les magiciens {{merlin}} (bleu) et {{gandalf}} (rouge) sont vos coéquipiers. Sur la planche de jeu, il jouera à votre place pour un tour si vous cliquez d'abord sur l'icône du magicien. Si vous roulez d'abord le dé vous-même, vous pourrez ensuite lui demander conseil sur la case à jouer. Pour jouer seul, cliquez sur l'icône du magicien adverse sur la page d'accueil. Ce sera alors votre adversaire pour cette partie.",
+    "back_button": "Retour"
+  },
+  "icons": {
+    "pecheur": "pêcheur",
+    "poisson": "poisson", 
+    "mouche": "mouche"
+  },
+  "colors": {
+    "bleu": "bleu",
+    "rouge": "rouge"
+  },
+  "wizards": {
+    "Merlin": "Merlin",
+    "Gandalf": "Gandalf"
+  },
+  "notation": {
+    "title": "Notation de la partie",
+    "download": "Télécharger TXT",
+    "copy": "Copier",
+    "copied": "Notation copiée dans le presse-papiers !",
+    "copy_error": "Erreur lors de la copie",
+    "loading_error": "Erreur lors du chargement de la notation",
+    "no_game": "Aucune partie en cours",
+    "game_start": "Début de la partie le",
+    "game_end": "Fin de la partie le",
+    "blue_player": "Joueur bleu:",
+    "red_player": "Joueur rouge:",
+    "turn": "Tour",
+    "rolls": "roule",
+    "plays": "joue en",
+    "wins": "et gagne sur",
+    "diagonal1": "diagonale \"/\" (a1-c3)",
+    "diagonal2": "diagonale \"\\\" (a3-c1)",
+    "column": "colonne",
+    "row": "rangée",
+    "game_duration": "Durée de la partie:",
+    "minutes": "minutes",
+    "seconds": "secondes",
+    "game_stats": "Statistiques de la partie:",
+    "total_turns": "Nombre total de coups:",
+    "blue_turns": "Coups joués par les bleus:",
+    "red_turns": "Coups joués par les rouges:",
+    "placements": "Placements:",
+    "captures": "Captures:",
+    "game_ended_manually": "Partie terminée manuellement",
+    "lost_turn": "perd son tour - aucun coup possible",
+    "lost_turns": "Tours perdus:",
+    "victory_for": "Victoire pour les",
+    "blue_moves_count": "Nombre de coups joués par les bleus:",
+    "red_moves_count": "Nombre de coups joués par les rouges:",
+    "placements_lowercase": "placements",
+    "captures_lowercase": "captures",
+    "lost_turns_lowercase": "tours perdus"
+  },
+  "wizard_strategy": {
+    "fisherman_explanation": "Le pêcheur ne peut capturer que les poissons",
+    "fish_explanation": "Le poisson ne peut capturer que les mouches",
+    "fly_explanation": "La mouche ne peut capturer que les pêcheurs",
+    "invalid_move_reason": "{{explanation}}. Cette case contient {{defender}}."
+  },
+  "ui": {
+    "grid_toggle_show": "Afficher les adresses des cases",
+    "grid_toggle_hide": "Masquer les adresses des cases",
+    "audio_enable": "Activer le son",
+    "audio_disable": "Désactiver le son",
+    "view_notation": "Voir la notation de la partie en cours",
+    "history_button_tooltip": "Afficher/masquer l'historique des coups",
+    "history_show_last": "Afficher le dernier coup",
+    "history_show_all": "Afficher tous les coups",
+    "history_hide": "Masquer l'historique"
+  },
+  "theme": {
+    "light": "Clair",
+    "dark": "Sombre",
+    "system": "Système",
+    "toggle_tooltip": "Basculer le thème",
+    "switch_to_dark": "Passer au mode sombre",
+    "switch_to_light": "Passer au mode clair",
+    "current_theme": "Thème actuel : {{theme}}"
+  },
+  "alt_text": {
+    "victory_confetti": "Animation de victoire",
+    "rolling_dice": "Dé qui roule",
+    "merlin": "Merlin",
+    "gandalf": "Gandalf"
+  }
+}

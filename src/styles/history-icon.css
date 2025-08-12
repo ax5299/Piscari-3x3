@@ -1,0 +1,72 @@
+/* History Button Styles - H avec différents états selon le mode d'affichage */
+.history-btn {
+  background: none !important;
+  border: none !important;
+  cursor: pointer;
+  padding: 0.25rem;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Bookman Old Style", "Book Antiqua", serif !important;
+  font-size: 24px;
+  font-weight: bold;
+  color: #22c55e;
+  text-decoration: none;
+}
+
+.history-btn:hover {
+  background: none !important;
+  transform: scale(1.05);
+  color: #16a34a;
+  text-decoration-color: #16a34a;
+}
+
+.history-btn:focus,
+.history-btn:focus-visible {
+  outline: 2px solid #22c55e !important;
+  outline-offset: 2px !important;
+  border-radius: 4px;
+  background: none !important;
+}
+
+.history-btn:active {
+  color: #15803d;
+  text-decoration-color: #15803d;
+  transform: scale(0.95);
+}
+
+/* États spécifiques selon le mode d'affichage */
+.history-btn.last-move {
+  text-decoration: none;
+}
+
+.history-btn.all-moves {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+}
+
+/* Disabled state - grisé */
+.history-btn:disabled {
+  cursor: not-allowed;
+  color: #9ca3af !important;
+  text-decoration: none !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .history-btn {
+    font-size: 20px;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1.5px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .history-btn {
+    font-size: 26px;
+    text-underline-offset: 5px;
+    text-decoration-thickness: 2.5px;
+  }
+}
