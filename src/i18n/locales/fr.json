@@ -48,21 +48,8 @@
     "end_game": "Partie terminée"
   },
   "rules": {
-    "title": "Jeu de Piscari : Règles du jeu",
-    "rule1": "Ce jeu se joue à deux, mais vous pouvez jouer seul, contre un magicien numérique ({{merlin}} ou {{gandalf}}).",
-    "rule2": "Chaque joueur choisit une couleur (bleu à gauche ou rouge à droite); décidez qui jouera en premier.",
-    "rule3": "Le but est d'aligner sur le damier trois icônes identiques (pêcheurs, poissons ou mouches) de la même couleur. L'alignement peut être horizontal, vertical ou diagonal, comme pour le jeu de tic-tac-toe. Le premier joueur qui réussit à aligner trois icônes identiques gagne la partie.",
-    "rule4": "À tour de rôle, les joueurs roulent le dé en cliquant sur le symbole \"?\" de la couleur choisie. Le dé clignote alors en affichant successivement les icônes d'un pêcheur, d'un poisson et d'une mouche. Le résultat, choisi au hasard, apparaîtra automatiquement après quelques secondes.",
-    "rule5": "Pour placer le pion sur le damier, le joueur clique sur la case choisie.",
-    "rule6": "Le pion peut être placé dans une case libre, ou il peut remplacer un pion existant, peu importe la couleur. Toutefois, il faut respecter la boucle alimentaire :",
-    "food_chain": {
-      "title": "Boucle alimentaire :",
-      "rule1": "Le pêcheur attrape le poisson",
-      "rule2": "Le poisson mange la mouche", 
-      "rule3": "La mouche pique le pêcheur"
-    },
-    "rule7": "Si le joueur peut placer son pion sur le damier, il doit le faire, même si le résultat semble le désavantager. S'il n'existe aucune possibilité, il perd son tour.",
-    "rule8": "Les magiciens {{merlin}} (bleu) et {{gandalf}} (rouge) sont vos coéquipiers. Sur la planche de jeu, il jouera à votre place pour un tour si vous cliquez d'abord sur l'icône du magicien. Si vous roulez d'abord le dé vous-même, vous pourrez ensuite lui demander conseil sur la case à jouer. Pour jouer seul, cliquez sur l'icône du magicien adverse sur la page d'accueil. Ce sera alors votre adversaire pour cette partie.",
+    "title": "Règles du jeu de Piscari",
+    "all": "Ce jeu se joue à deux, mais vous pouvez jouer seul, contre un magicien numérique ({{merlin}} ou {{gandalf}}).\n\nChaque joueur choisit une couleur (bleu à gauche ou rouge à droite); décidez qui jouera en premier.\n\nLe but est d'aligner sur le damier trois icônes identiques (pêcheurs, poissons ou mouches) de la même couleur. L'alignement peut être horizontal, vertical ou diagonal, comme pour le jeu de tic-tac-toe. Le premier joueur qui réussit à aligner trois icônes identiques gagne la partie.\n\nÀ tour de rôle, les joueurs roulent le dé en cliquant sur le symbole \"?\" de la couleur choisie. Le dé clignote alors en affichant successivement les icônes d'un pêcheur, d'un poisson et d'une mouche. Le résultat, choisi au hasard, apparaîtra automatiquement après quelques secondes.\n\nPour placer le pion sur le damier, le joueur clique sur la case choisie.\n\nLe pion peut être placé dans une case libre, ou il peut remplacer un pion existant, peu importe la couleur. Toutefois, il faut respecter la boucle alimentaire :\n\nBoucle alimentaire :\n➢ Le pêcheur attrape le poisson\n➢ Le poisson mange la mouche\n➢ La mouche pique le pêcheur\n\nSi le joueur peut placer son pion sur le damier, il doit le faire, même si le résultat semble le désavantager. S'il n'existe aucune possibilité, il perd son tour.\n\nLes magiciens {{merlin}} (bleu) et {{gandalf}} (rouge) sont vos coéquipiers. Sur la planche de jeu, il jouera à votre place pour un tour si vous cliquez d'abord sur l'icône du magicien. Si vous roulez d'abord le dé vous-même, vous pourrez ensuite lui demander conseil sur la case à jouer. Pour jouer seul, cliquez sur l'icône du magicien adverse sur la page d'accueil. Ce sera alors votre adversaire pour cette partie.",
     "back_button": "Retour"
   },
   "icons": {
