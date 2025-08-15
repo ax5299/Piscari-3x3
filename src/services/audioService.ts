@@ -105,6 +105,10 @@ class AudioService {
     await this.playSound(ASSETS.sounds.capture);
   }
 
+  async playDeception(): Promise<void> {
+    await this.playSound(ASSETS.sounds.deception);
+  }
+
   // Précharger tous les sons au démarrage
   preloadAllSounds(): void {
     this.preloadAudio(ASSETS.sounds.dice);
@@ -114,6 +118,7 @@ class AudioService {
     this.preloadAudio(ASSETS.sounds.victory);
     this.preloadAudio(ASSETS.sounds.placement);
     this.preloadAudio(ASSETS.sounds.capture);
+    this.preloadAudio(ASSETS.sounds.deception);
   }
 
   // Tester la lecture audio

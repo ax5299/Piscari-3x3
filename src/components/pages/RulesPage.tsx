@@ -23,43 +23,8 @@ export const RulesPage: React.FC = () => {
           {t('rules.title')}
         </h1>
 
-        <div className="rules-list">
-          <div className="rule-item">
-            <p>➢ {t('rules.rule1', { merlin: t('wizards.Merlin'), gandalf: t('wizards.Gandalf') })}</p>
-          </div>
-          
-          <div className="rule-item">
-            <p>➢ {t('rules.rule2')}</p>
-          </div>
-          
-          <div className="rule-item">
-            <p>➢ {t('rules.rule3')}</p>
-          </div>
-          
-          <div className="rule-item">
-            <p>➢ {t('rules.rule4')}</p>
-          </div>
-          
-          <div className="rule-item">
-            <p>➢ {t('rules.rule5')}</p>
-          </div>
-          
-          <div className="rule-item">
-            <p>➢ {t('rules.rule6')}</p>
-            <div className="food-chain-list">
-              <p>○ {t('rules.food_chain.rule1')}</p>
-              <p>○ {t('rules.food_chain.rule2')}</p>
-              <p>○ {t('rules.food_chain.rule3')}</p>
-            </div>
-          </div>
-          
-          <div className="rule-item">
-            <p>➢ {t('rules.rule7')}</p>
-          </div>
-          
-          <div className="rule-item">
-            <p>➢ {t('rules.rule8', { merlin: t('wizards.Merlin'), gandalf: t('wizards.Gandalf') })}</p>
-          </div>
+        <div className="rules-list" style={{ whiteSpace: 'pre-wrap' }}>
+          <p>{t('rules.all', { merlin: t('wizards.Merlin'), gandalf: t('wizards.Gandalf') })}</p>
         </div>
 
         <div className="rules-footer">

@@ -458,6 +458,11 @@ export const useGameStore = create<GameStore>()(
           
           // Si aucun coup n'est possible, transférer le contrôle après 4 secondes
           if (validMoves.length === 0) {
+            // Jouer le son de déception après un court délai
+            addTimer(() => {
+              audioService.playDeception();
+            }, 500); // Délai de 500ms pour jouer après le son de l'icône
+
             // Enregistrer le tour perdu dans la notation
             const currentState = get();
             const currentActivePlayer = currentState.players[color];

@@ -820,6 +820,10 @@ body {
   display: none;
 }
 
+.game-controls-vertical {
+  display: none;
+}
+
 .game-btn {
   padding: 1rem 2rem;
   font-size: 1.375rem;
@@ -1197,9 +1201,10 @@ body {
   /* Écrans verticaux : zones joueurs sous les messages */
   .game-container {
     display: grid;
-    grid-template-rows: auto 1fr auto auto auto;
+    grid-template-rows: auto auto 1fr auto auto auto;
     grid-template-areas:
       "header"
+      "controls"
       "main"
       "message"
       "players"
@@ -1209,14 +1214,30 @@ body {
 
   .game-header {
     grid-area: header;
-    padding: 1rem 2rem;
+    padding: 0.5rem 2rem 0 2rem;
+    position: relative;
+  }
+
+  /* En mode vertical, cacher les contrôles du header */
+  .game-header .header-controls {
+    display: none;
+  }
+
+  /* Zone pour les contrôles en mode vertical */
+  .game-controls-vertical {
+    grid-area: controls;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 2rem;
+    gap: 0.5rem;
   }
 
   .game-main {
     grid-area: main;
     position: static;
     justify-content: center;
-    padding: 1rem;
+    padding: 0.5rem 1rem 1rem 1rem;
     display: flex;
     align-items: center;
   }

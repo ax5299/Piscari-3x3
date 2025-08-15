@@ -113,7 +113,8 @@ export const ASSETS = {
     },
     victory: '/assets/sounds/victoire.mp3',
     placement: '/assets/sounds/bell.mp3',
-    capture: '/assets/sounds/bloop.mp3'
+    capture: '/assets/sounds/bloop.mp3',
+    deception: '/assets/sounds/deception.mp3'
   }
 };
 

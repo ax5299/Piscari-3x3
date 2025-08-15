@@ -37,7 +37,7 @@
   "game": {
     "turn_start": "C'est aux {{color}}s de jouer.",
     "select_cell": "{{player}}, veuillez sélectionner une case vide ou un(e) {{prey}}.",
-    "no_moves": "Désolé les {{color}}s, aucune case ne permet de placer un(e) {{icon}}. Ce sera bientôt aux {{inactiveColor}}s de jouer.",
+    "no_moves": "Aucune case ne permet de placer un(e) {{icon}}. Ce sera bientôt aux {{inactiveColor}}s de jouer.",
     "wizard_playing": "C'est {{wizard}} qui joue pour ce tour.",
     "wizard_suggestion": "{{player}}, {{wizard}} vous fait une suggestion; c'est à vous de choisir la case.",
     "victory": "Bravo les {{color}}s !",

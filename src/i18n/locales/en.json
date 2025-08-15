@@ -37,7 +37,7 @@
   "game": {
     "turn_start": "It's the {{color}}s' turn to play.",
     "select_cell": "{{player}}, please select an empty cell or a {{prey}}.",
-    "no_moves": "Sorry {{color}}s, no cell allows placing a {{icon}}. It will soon be the {{inactiveColor}}s' turn.",
+    "no_moves": "No cell allows placing a {{icon}}. It will soon be the {{inactiveColor}}s' turn.",
     "wizard_playing": "{{wizard}} is playing this turn.",
     "wizard_suggestion": "{{player}}, {{wizard}} is making a suggestion; it's up to you to choose the cell.",
     "victory": "Congratulations {{color}}s!",
@@ -45,24 +45,11 @@
     "wizard_helper": "{{wizard}}: your teammate",
     "wait_turn": "Wait for your turn",
     "rules_button": "Game Rules",
-    "end_game": "Game Over"
+    "end_game": "Game ended"
   },
   "rules": {
     "title": "Piscari Game: Rules",
-    "rule1": "This game is played by two players, but you can play alone against a digital wizard ({{merlin}} or {{gandalf}}).",
-    "rule2": "Each player chooses a color (blue on the left or red on the right); decide who will play first.",
-    "rule3": "The goal is to align three identical icons (fishermen, fish, or flies) of the same color on the board. The alignment can be horizontal, vertical, or diagonal, like in tic-tac-toe. The first player to successfully align three identical icons wins the game.",
-    "rule4": "Taking turns, players roll the dice by clicking on the \"?\" symbol of their chosen color. The dice then blinks, successively displaying the icons of a fisherman, a fish, and a fly. The result, chosen randomly, will appear automatically after a few seconds.",
-    "rule5": "To place the piece on the board, the player clicks on the chosen cell.",
-    "rule6": "The piece can be placed in an empty cell, or it can replace an existing piece, regardless of color. However, the food chain must be respected:",
-    "food_chain": {
-      "title": "Food chain:",
-      "rule1": "The fisherman catches the fish",
-      "rule2": "The fish eats the fly",
-      "rule3": "The fly stings the fisherman"
-    },
-    "rule7": "If the player can place their piece on the board, they must do so, even if the result seems to disadvantage them. If no possibility exists, they lose their turn.",
-    "rule8": "The wizards {{merlin}} (blue) and {{gandalf}} (red) are your teammates. On the game board, he will play for you for one turn if you click on the wizard's icon first. If you roll the dice yourself first, you can then ask him for advice on which cell to play. To play alone, click on the opposing wizard's icon on the home page. He will then be your opponent for this game.",
+    "all": "This game is played by two players, but you can play alone against a digital wizard ({{merlin}} or {{gandalf}}).\n\nEach player chooses a color (blue on the left or red on the right); decide who will play first.\n\nThe goal is to align three identical icons (fishermen, fish, or flies) of the same color on the board. The alignment can be horizontal, vertical, or diagonal, like in tic-tac-toe. The first player to successfully align three identical icons wins the game.\n\nTaking turns, players roll the dice by clicking on the \"?\" symbol of their chosen color. The dice then blinks, successively displaying the icons of a fisherman, a fish, and a fly. The result, chosen randomly, will appear automatically after a few seconds.\n\nTo place the piece on the board, the player clicks on the chosen cell.\n\nThe piece can be placed in an empty cell, or it can replace an existing piece, regardless of color. However, the food chain must be respected:\n➢ The fisherman catches the fish\n➢ The fish eats the fly\n➢ The fly stings the fisherman\n\nIf the player can place their piece on the board, they must do so, even if the result seems to disadvantage them. If no possibility exists, they lose their turn.\n\nThe wizards {{merlin}} (blue) and {{gandalf}} (red) are your teammates. On the game board, he will play for you for one turn if you click on the wizard's icon first. If you roll the dice yourself first, you can then ask him for advice on which cell to play. To play alone, click on the opposing wizard's icon on the home page. He will then be your opponent for this game.",
     "back_button": "Back"
   },
   "icons": {
@@ -95,7 +82,7 @@
     "plays": "plays at",
     "wins": "and wins on",
     "diagonal1": "diagonal \"/\" (a1-c3)",
-    "diagonal2": "diagonal \"\\\" (a3-c1)",
+    "diagonal2": "diagonal \\\"\\\" (a3-c1)",
     "column": "column",
     "row": "row",
     "game_duration": "Game duration:",

@@ -3,7 +3,6 @@ import { useGameStore } from '../../store/gameStore';
 import { useI18n } from '../../hooks/useI18n';
 import { ASSETS } from '../../utils/constants';
 import { audioService } from '../../services/audioService';
-import { GameNotationModal } from '../GameNotationModal';
 import { gameNotationService } from '../../services/gameNotationService';
 import { HistoryButton } from '../ui/HistoryButton';
 import { calculateHistoryDisplayDataFromService, getHistoryColorClass } from '../../utils/historyUtils';
@@ -79,9 +78,6 @@ export const GamePage: React.FC = () => {
   const [audioTested, setAudioTested] = useState(false);
   // État local pour l'icône audio
   const [audioEnabled, setAudioEnabled] = useState(audioService.isAudioEnabled());
-
-  // État pour le modal de notation
-  const [showNotationModal, setShowNotationModal] = useState(false);
 
   // Références pour le focus sur les dés et magiciens
   const diceBleuRef = useRef<HTMLDivElement>(null);
@@ -273,14 +269,32 @@ export const GamePage: React.FC = () => {
           >
             {audioEnabled ? "🔊" : "🔇"}
           </button>
-          <button
-            className="notation-btn"
-            onClick={() => setShowNotationModal(true)}
-            title={t('ui.view_notation')}
-          >
-            📋
-          </button>
         </div>
+      </div>
+
+      {/* Contrôles pour écrans verticaux */}
+      <div className="game-controls-vertical">
+        <ThemeToggle size="md" />
+        <HistoryButton />
+        <button
+          className={`grid-toggle ${showGridLabels ? 'active' : 'inactive'}`}
+          onClick={toggleGridLabels}
+          title={showGridLabels ? t('ui.grid_toggle_hide') : t('ui.grid_toggle_show')}
+        >
+          #
+        </button>
+        <button
+          className="audio-toggle"
+          onClick={() => {
+            const newEnabled = !audioEnabled;
+            setAudioEnabled(newEnabled);
+            audioService.setAudioEnabled(newEnabled);
+            if (newEnabled) audioService.enableAudio();
+          }}
+          title={audioEnabled ? t('ui.audio_disable') : t('ui.audio_enable')}
+        >
+          {audioEnabled ? "🔊" : "🔇"}
+        </button>
       </div>
 
       {/* Zone de jeu principale */}
@@ -548,12 +562,6 @@ export const GamePage: React.FC = () => {
           {t('game.end_game')}
         </button>
       </div>
-
-      {/* Modal de notation */}
-      <GameNotationModal
-        isOpen={showNotationModal}
-        onClose={() => setShowNotationModal(false)}
-      />
     </div>
   );
 };
